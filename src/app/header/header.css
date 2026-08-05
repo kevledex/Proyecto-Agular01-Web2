@@ -1,7 +1,29 @@
 .header {
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #585858;
+    padding: 1rem 2rem;
 }
 .header-titulo {
-    padding-top: 2rem;
-    text-align: center;
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: font-weight 0.2s ease;
+}
+.nav-links a:hover {
+    font-weight: bold;
 }

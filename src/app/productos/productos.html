@@ -1,46 +1,16 @@
 <main class="productos-container">
     <h2>Nuestros Productos</h2>
     <div class="grid-productos">
-        <div class="tarjeta">Producto 1
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem voluptates magnam velit atque et
-                impedit, qui tenetur a, nisi delectus sapiente deleniti! Iusto tenetur autem, consequatur reiciendis
-                beatae rerum incidunt.</p>
+        @for (producto of productos; track producto.id) {
+        <div class="tarjeta">
+            <h3>{{ producto.nombre }}</h3>
+            <p>{{ producto.precio }}</p>
+            @if (producto.stock > 0) {
+            <p>Producto disponible</p>
+            } @else {
+            <p>Producto agotado</p>
+            }
         </div>
-        <div class="tarjeta">Producto 2
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum repellat recusandae ex nobis, voluptates
-                laudantium eligendi saepe quidem praesentium odit. Nesciunt, consectetur! Alias quas minima aperiam
-                quam, vel provident vitae!</p>
-        </div>
-        <div class="tarjeta">Producto 3
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti incidunt quaerat delectus, accusantium
-                sequi aspernatur quibusdam ab. Maxime quisquam nihil voluptatum pariatur rem cupiditate voluptatibus
-                debitis! Assumenda ratione expedita tenetur.</p>
-        </div>
-        <div class="tarjeta">Producto 4
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et reiciendis ullam nesciunt odit ut, atque ea?
-                Quod incidunt asperiores ea delectus aperiam ut recusandae! Aspernatur aliquam cupiditate amet dolore
-                suscipit!</p>
-        </div>
-        <div class="tarjeta">Producto 5
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis exercitationem magni non tempora,
-                nesciunt, quaerat corporis eius accusamus quisquam incidunt a sunt in ratione vitae blanditiis aliquam
-                soluta sapiente error.</p>
-        </div>
-        <div class="tarjeta">Producto 6
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, reprehenderit sit ab fuga explicabo
-                reiciendis et optio dolorum quis voluptatem rem! Quam pariatur alias voluptate, voluptatem vero optio
-                eligendi quibusdam.</p>
-        </div>
-        <div class="tarjeta">Producto 7
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur enim, illo dicta rerum omnis
-                sapiente!
-                Neque eaque facere maxime expedita odio porro, qui quis culpa recusandae atque, voluptatem illum magni!
-            </p>
-        </div>
-        <div class="tarjeta">Producto 8
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi repellendus animi laboriosam tempora
-                excepturi aliquam qui? Corporis eius iste natus officiis recusandae possimus voluptatem quo incidunt.
-                Ipsa laudantium rerum nobis?</p>
-        </div>
+        }
     </div>
 </main>
