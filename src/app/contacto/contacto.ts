@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-contacto',
   imports: [ReactiveFormsModule],
@@ -7,30 +7,46 @@ import { ReactiveFormsModule, FormControl, FormGroup, FormBuilder } from '@angul
   styleUrl: './contacto.css',
 })
 export class Contacto {
-  /*formularioContacto = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    telefono: new FormControl(''),
-    descripcion: new FormControl('')
-  })*/
+  private formBuilder = inject(FormBuilder);
 
-    formBuilder = inject(FormBuilder);
+  formularioContactoBuilder = this.formBuilder.group({
+    name: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    telefono: this.formBuilder.group({
+      personal: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      convencional: ['', [Validators.minLength(7), Validators.maxLength(8)]]
+    }),
+    descripcion: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]]
+  })
 
-    formularioContactoBuilder = this.formBuilder.group({
-      name: [''],
-      email: [''],
-      telefono: this.formBuilder.group({
-        personal: [''],
-        convencional: [''],
-        trabajo: ['']
-      }),
-      descripcion: ['']
-    })
+  enviar() {
+    this.formularioContactoBuilder.markAllAsTouched()
 
+    if (this.formularioContactoBuilder.get('name')?.invalid) {
+      alert('El nombre es obligatorio.')
+      return
+    }
 
+    if (this.formularioContactoBuilder.get('email')?.invalid) {
+      alert('El email es invalido')
+      return
+    }
 
-  enviar () {
-    console.log(this.formularioContactoBuilder.value);
-    alert('Se enviaron los datos de contacto')
+    if (this.formularioContactoBuilder.get('telefono.personal')?.invalid) {
+      alert('El teléfono personal debe tener 10 digitos')
+      return
+    }
+
+    if (this.formularioContactoBuilder.get('telefono.convencional')?.invalid) {
+      alert('El teléfono convencional debe tener de 7 a 8 digitos')
+      return
+    }
+
+    if (this.formularioContactoBuilder.get('descripcion')?.invalid) {
+      alert('La descripción debe tener entre 10 y 200 caracteres.')
+      return
+    }
+
+    alert('El formulario se envio correctamente')
   }
 }
