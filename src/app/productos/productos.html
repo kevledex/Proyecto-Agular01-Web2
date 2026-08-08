@@ -3,8 +3,9 @@
     <div class="grid-productos">
         @for (producto of productos; track producto.id) {
         <div class="tarjeta">
+            <img class="tarjeta-img" [src]="producto.imagen" [alt]="producto.nombre">
             <h3>{{ producto.nombre }}</h3>
-            <p>{{ producto.precio }}</p>
+            <p>${{ producto.precio }}</p>
             @if (producto.stock > 0) {
             <p>Producto disponible</p>
             } @else {

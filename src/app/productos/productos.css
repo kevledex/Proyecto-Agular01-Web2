@@ -11,14 +11,14 @@
 }
 .grid-productos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
 }
 .tarjeta {
     background-color: #1a1a1a;
     border: 1px solid #333;
     border-radius: 10px;
-    padding: 2rem 1rem;
+    padding: 1rem;
     color: #ffffff;
     font-size: 1rem;
     transition: transform 0.2s ease
@@ -26,4 +26,11 @@
 .tarjeta:hover {
     transform: translateY(-5px);
     border-color: #ffffff;
+}
+.tarjeta-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
 }
