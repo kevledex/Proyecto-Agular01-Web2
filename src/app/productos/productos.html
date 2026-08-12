@@ -3,15 +3,18 @@
     <div class="grid-productos">
         @for (producto of productos; track producto.id) {
         <div class="tarjeta">
-            <img class="tarjeta-img" [src]="producto.imagen" [alt]="producto.nombre">
-            <h3>{{ producto.nombre }}</h3>
-            <p>${{ producto.precio }}</p>
-            @if (producto.stock > 0) {
-            <p>Producto disponible</p>
+            <img class="tarjeta-img" [src]="producto.image" [alt]="producto.title">
+            <h3>{{ producto.title }}</h3>
+            <p>${{ producto.price }}</p>
+
+            @if (producto.rating.count > 0) {
+            <p>Producto disponible ({{ producto.rating.count }} en stock)</p>
             } @else {
             <p>Producto agotado</p>
             }
         </div>
+        } @empty {
+        <p>Cargando productos...</p>
         }
     </div>
 </main>
