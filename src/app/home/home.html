@@ -1,6 +1,48 @@
 <section class="home-container">
     <h2>Bienvenido a nuestra tienda online</h2>
     <p>Encuentra los mejores precios, ofertas exclusivas y envíos a todo el país.</p>
-    
     <a href="/productos" class="btn-primary">Ver Productos</a>
+</section>
+
+<main class="productos-container">
+    <h2>Productos destacados</h2>
+    <div class="grid-productos">
+        @for (producto of productos; track producto.id) {
+        <div class="tarjeta">
+            <img class="tarjeta-img" [src]="producto.image" [alt]="producto.title">
+            <h3>{{ producto.title }}</h3>
+            <p>${{ producto.price }}</p>
+        </div>
+        } @empty {
+        <p>Cargando productos destacados...</p>
+        }
+    </div>
+</main>
+
+<section class="nosotros-container">
+    <div class="conocenos-block">
+        <img class="hero-img"
+            [src]="informacion.conocenos.imagen"
+            [alt]="informacion.conocenos.alt">
+        <h2>{{ informacion.conocenos.titulo }}</h2>
+        <p>{{ informacion.conocenos.descripcion }}</p>
+    </div>
+
+    <div class="mision-vision-grid">
+        <div class="columna">
+            <img class="columna-img"
+                [src]="informacion.mision.imagen"
+                [alt]="informacion.mision.alt">
+            <h2>{{ informacion.mision.titulo }}</h2>
+            <p>{{ informacion.mision.descripcion }}</p>
+        </div>
+
+        <div class="columna">
+            <img class="columna-img"
+                [src]="informacion.vision.imagen"
+                [alt]="informacion.vision.alt">
+            <h2>{{ informacion.vision.titulo }}</h2>
+            <p>{{ informacion.vision.descripcion }}</p>
+        </div>
+    </div>
 </section>
